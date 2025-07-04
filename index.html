@@ -14,6 +14,7 @@
             <ul class="nav-links">
                 <li><a href="#about">关于我</a></li>
                 <li><a href="#projects">项目</a></li>
+                <li><a href="#learning">学习记录</a></li>
                 <li><a href="#contact">联系我</a></li>
             </ul>
         </div>
@@ -60,12 +61,207 @@
             </div>
         </section>
 
+        <section id="learning">
+            <h2><i class="fas fa-graduation-cap"></i> 学习记录</h2>
+            <div class="learning-container">
+                <div class="learning-nav">
+                    <button class="learning-tab active" data-tab="papers">论文阅读</button>
+                    <button class="learning-tab" data-tab="knowledge">知识记录</button>
+                    <button class="learning-tab" data-tab="notes">学习笔记</button>
+                </div>
+                
+                <div class="learning-content">
+                    <!-- 论文阅读标签页 -->
+                    <div class="tab-content active" id="papers">
+                        <div class="papers-grid">
+                            <div class="paper-card">
+                                <div class="paper-header">
+                                    <h3>Attention Is All You Need</h3>
+                                    <span class="paper-year">2017</span>
+                                </div>
+                                <div class="paper-authors">Vaswani et al.</div>
+                                <div class="paper-venue">NIPS 2017</div>
+                                <div class="paper-tags">
+                                    <span class="tag">Transformer</span>
+                                    <span class="tag">NLP</span>
+                                    <span class="tag">Deep Learning</span>
+                                </div>
+                                <div class="paper-summary">
+                                    介绍了革命性的Transformer架构，完全基于注意力机制，为现代NLP奠定了基础。
+                                </div>
+                                <div class="paper-links">
+                                    <a href="#" target="_blank" class="paper-link">
+                                        <i class="fas fa-file-pdf"></i> 论文链接
+                                    </a>
+                                    <a href="#" class="paper-link notes-link">
+                                        <i class="fas fa-sticky-note"></i> 我的笔记
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="paper-card">
+                                <div class="paper-header">
+                                    <h3>BERT: Pre-training of Deep Bidirectional Transformers</h3>
+                                    <span class="paper-year">2018</span>
+                                </div>
+                                <div class="paper-authors">Devlin et al.</div>
+                                <div class="paper-venue">NAACL 2019</div>
+                                <div class="paper-tags">
+                                    <span class="tag">BERT</span>
+                                    <span class="tag">Pre-training</span>
+                                    <span class="tag">NLP</span>
+                                </div>
+                                <div class="paper-summary">
+                                    提出了双向编码器表示的预训练方法，在多个NLP任务上取得了突破性进展。
+                                </div>
+                                <div class="paper-links">
+                                    <a href="#" target="_blank" class="paper-link">
+                                        <i class="fas fa-file-pdf"></i> 论文链接
+                                    </a>
+                                    <a href="#" class="paper-link notes-link">
+                                        <i class="fas fa-sticky-note"></i> 我的笔记
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="add-paper-btn">
+                            <button class="btn-primary">
+                                <i class="fas fa-plus"></i> 添加新论文
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- 知识记录标签页 -->
+                    <div class="tab-content" id="knowledge">
+                        <div class="knowledge-grid">
+                            <div class="knowledge-card">
+                                <div class="knowledge-header">
+                                    <h3>深度学习基础</h3>
+                                    <span class="knowledge-category">AI/ML</span>
+                                </div>
+                                <div class="knowledge-topics">
+                                    <div class="topic-item">
+                                        <i class="fas fa-check-circle"></i>
+                                        <span>神经网络基本原理</span>
+                                    </div>
+                                    <div class="topic-item">
+                                        <i class="fas fa-check-circle"></i>
+                                        <span>反向传播算法</span>
+                                    </div>
+                                    <div class="topic-item">
+                                        <i class="fas fa-clock"></i>
+                                        <span>优化算法（进行中）</span>
+                                    </div>
+                                </div>
+                                <div class="knowledge-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 75%"></div>
+                                    </div>
+                                    <span class="progress-text">75% 完成</span>
+                                </div>
+                            </div>
+                            
+                            <div class="knowledge-card">
+                                <div class="knowledge-header">
+                                    <h3>云原生技术栈</h3>
+                                    <span class="knowledge-category">DevOps</span>
+                                </div>
+                                <div class="knowledge-topics">
+                                    <div class="topic-item">
+                                        <i class="fas fa-check-circle"></i>
+                                        <span>Docker 容器化</span>
+                                    </div>
+                                    <div class="topic-item">
+                                        <i class="fas fa-clock"></i>
+                                        <span>Kubernetes 编排</span>
+                                    </div>
+                                    <div class="topic-item">
+                                        <i class="fas fa-circle"></i>
+                                        <span>微服务架构</span>
+                                    </div>
+                                </div>
+                                <div class="knowledge-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 40%"></div>
+                                    </div>
+                                    <span class="progress-text">40% 完成</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="add-knowledge-btn">
+                            <button class="btn-primary">
+                                <i class="fas fa-plus"></i> 添加知识领域
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- 学习笔记标签页 -->
+                    <div class="tab-content" id="notes">
+                        <div class="notes-grid">
+                            <div class="note-card">
+                                <div class="note-header">
+                                    <h3>Go语言并发编程</h3>
+                                    <span class="note-date">2025-01-15</span>
+                                </div>
+                                <div class="note-preview">
+                                    深入理解 Go 的 goroutine 和 channel 机制，学习了如何优雅地处理并发场景...
+                                </div>
+                                <div class="note-tags">
+                                    <span class="tag">Go</span>
+                                    <span class="tag">并发</span>
+                                    <span class="tag">系统编程</span>
+                                </div>
+                                <div class="note-actions">
+                                    <a href="#" class="note-link">阅读全文</a>
+                                </div>
+                            </div>
+                            
+                            <div class="note-card">
+                                <div class="note-header">
+                                    <h3>Python数据结构优化</h3>
+                                    <span class="note-date">2025-01-10</span>
+                                </div>
+                                <div class="note-preview">
+                                    总结了Python中各种数据结构的性能特点和使用场景，包括列表、字典、集合等...
+                                </div>
+                                <div class="note-tags">
+                                    <span class="tag">Python</span>
+                                    <span class="tag">数据结构</span>
+                                    <span class="tag">性能优化</span>
+                                </div>
+                                <div class="note-actions">
+                                    <a href="#" class="note-link">阅读全文</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="add-note-btn">
+                            <button class="btn-primary">
+                                <i class="fas fa-plus"></i> 写新笔记
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="contact">
             <h2><i class="fas fa-envelope"></i> 联系我</h2>
             <p>随时通过以下方式与我交流：</p>
+            <div class="contact-info">
+                <div class="email-container">
+                    <span class="email-label">邮箱:</span>
+                    <span class="email-address" id="email-text">hu__jy@163.com</span>
+                    <button class="copy-btn" onclick="copyEmail()" title="点击复制邮箱">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                </div>
+            </div>
             <div class="social-links">
                 <a href="https://github.com/hjyfight" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                <a href="mailto:hu__jy@163.com" title="Email"><i class="fas fa-envelope"></i></a>
+                <a href="mailto:hu__jy@163.com" title="发送邮件"><i class="fas fa-envelope"></i></a>
                 <a href="https://blog.csdn.net/qq_61973247?type=blog" target="_blank" title="Blog"><i class="fas fa-blog"></i></a>
             </div>
         </section>

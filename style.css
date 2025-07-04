@@ -174,9 +174,410 @@ h2 i {
    transform: translateX(5px);
 }
 
+/* 学习记录模块 */
+.learning-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.learning-nav {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+    border-bottom: 2px solid #333;
+}
+
+.learning-tab {
+    background: none;
+    border: none;
+    padding: 15px 30px;
+    color: var(--text-secondary-color);
+    font-size: 1.1em;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-bottom: 3px solid transparent;
+}
+
+.learning-tab:hover {
+    color: var(--primary-color);
+}
+
+.learning-tab.active {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 论文卡片样式 */
+.papers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.paper-card {
+    background: var(--surface-color);
+    border-radius: 12px;
+    padding: 25px;
+    border: 1px solid #333;
+    transition: all 0.3s ease;
+}
+
+.paper-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(52, 152, 219, 0.15);
+    border-color: var(--primary-color);
+}
+
+.paper-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.paper-header h3 {
+    color: #fff;
+    margin: 0;
+    font-size: 1.2em;
+    line-height: 1.4;
+    flex: 1;
+}
+
+.paper-year {
+    background: var(--primary-color);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.8em;
+    font-weight: 600;
+    margin-left: 10px;
+}
+
+.paper-authors, .paper-venue {
+    color: var(--text-secondary-color);
+    font-size: 0.9em;
+    margin-bottom: 8px;
+}
+
+.paper-tags {
+    margin: 15px 0;
+}
+
+.tag {
+    background: rgba(52, 152, 219, 0.2);
+    color: var(--primary-color);
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.8em;
+    margin-right: 8px;
+    margin-bottom: 5px;
+    display: inline-block;
+}
+
+.paper-summary {
+    color: var(--text-color);
+    line-height: 1.6;
+    margin: 15px 0;
+    font-size: 0.95em;
+}
+
+.paper-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.paper-link {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 0.9em;
+    transition: all 0.3s ease;
+}
+
+.paper-link:hover {
+    transform: translateX(3px);
+}
+
+/* 知识记录样式 */
+.knowledge-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.knowledge-card {
+    background: var(--surface-color);
+    border-radius: 12px;
+    padding: 25px;
+    border: 1px solid #333;
+    transition: all 0.3s ease;
+}
+
+.knowledge-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(52, 152, 219, 0.15);
+}
+
+.knowledge-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.knowledge-header h3 {
+    color: #fff;
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.knowledge-category {
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 0.8em;
+    font-weight: 600;
+}
+
+.knowledge-topics {
+    margin-bottom: 20px;
+}
+
+.topic-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    color: var(--text-color);
+}
+
+.topic-item i {
+    width: 16px;
+}
+
+.topic-item .fa-check-circle {
+    color: #27ae60;
+}
+
+.topic-item .fa-clock {
+    color: #f39c12;
+}
+
+.topic-item .fa-circle {
+    color: #7f8c8d;
+}
+
+.knowledge-progress {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.progress-bar {
+    flex: 1;
+    height: 8px;
+    background: #333;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), #2ecc71);
+    transition: width 0.3s ease;
+}
+
+.progress-text {
+    color: var(--text-secondary-color);
+    font-size: 0.9em;
+    font-weight: 600;
+}
+
+/* 学习笔记样式 */
+.notes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.note-card {
+    background: var(--surface-color);
+    border-radius: 12px;
+    padding: 25px;
+    border: 1px solid #333;
+    transition: all 0.3s ease;
+}
+
+.note-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(52, 152, 219, 0.15);
+}
+
+.note-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+
+.note-header h3 {
+    color: #fff;
+    margin: 0;
+    font-size: 1.1em;
+    flex: 1;
+}
+
+.note-date {
+    color: var(--text-secondary-color);
+    font-size: 0.85em;
+    margin-left: 10px;
+}
+
+.note-preview {
+    color: var(--text-color);
+    line-height: 1.6;
+    margin-bottom: 15px;
+    font-size: 0.95em;
+}
+
+.note-actions {
+    margin-top: 15px;
+}
+
+.note-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9em;
+    transition: all 0.3s ease;
+}
+
+.note-link:hover {
+    transform: translateX(3px);
+}
+
+/* 添加按钮样式 */
+.add-paper-btn, .add-knowledge-btn, .add-note-btn {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, var(--primary-color), #2980b9);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(52, 152, 219, 0.3);
+}
+
 /* 联系方式 */
 #contact {
     text-align: center;
+}
+
+.contact-info {
+    margin: 30px 0;
+}
+
+.email-container {
+    display: inline-flex;
+    align-items: center;
+    background: var(--surface-color);
+    padding: 15px 20px;
+    border-radius: 25px;
+    border: 1px solid #333;
+    margin-bottom: 30px;
+    gap: 10px;
+    transition: all 0.3s ease;
+}
+
+.email-container:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.2);
+}
+
+.email-label {
+    color: var(--text-secondary-color);
+    font-weight: 500;
+    font-size: 0.95em;
+}
+
+.email-address {
+    color: var(--primary-color);
+    font-family: 'Courier New', monospace;
+    font-weight: 600;
+    font-size: 1.1em;
+    user-select: all;
+    padding: 5px 10px;
+    border-radius: 8px;
+    background: rgba(52, 152, 219, 0.1);
+}
+
+.copy-btn {
+    background: var(--primary-color);
+    border: none;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.9em;
+}
+
+.copy-btn:hover {
+    background: #2980b9;
+    transform: scale(1.05);
+}
+
+.copy-btn:active {
+    transform: scale(0.95);
+}
+
+.copy-btn.copied {
+    background: #27ae60;
+}
+
+.copy-btn.copied::after {
+    content: "已复制!";
+    margin-left: 5px;
+    font-size: 0.8em;
 }
 
 .social-links {
@@ -204,4 +605,92 @@ footer {
     background-color: var(--surface-color);
     color: var(--text-secondary-color);
     font-size: 0.9em;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .navbar .container {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .nav-links {
+        justify-content: center;
+    }
+    
+    .nav-links li {
+        margin: 0 10px;
+    }
+    
+    .hero {
+        padding: 60px 15px;
+    }
+    
+    .hero h1 {
+        font-size: 2.2em;
+    }
+    
+    .subtitle {
+        font-size: 1.2em;
+    }
+    
+    .learning-nav {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
+    .learning-tab {
+        padding: 12px 20px;
+        font-size: 1em;
+    }
+    
+    .papers-grid, .knowledge-grid, .notes-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .paper-header, .knowledge-header, .note-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .paper-year, .knowledge-category {
+        align-self: flex-start;
+    }
+    
+    .paper-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .knowledge-progress {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    
+    .progress-bar {
+        width: 100%;
+    }
+    
+    .email-container {
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+    }
+    
+    .email-address {
+        font-size: 1em;
+        text-align: center;
+    }
+    
+    .copy-btn {
+        align-self: center;
+        padding: 10px 20px;
+    }
 }
