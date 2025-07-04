@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 打字机效果
     const typewriterElement = document.getElementById('typewriter');
-    const texts = ["Web 开发者", "技术爱好者", "终身学习者"]; // 你可以自定义这里的文本
+    const texts = ["AI学习者", "技术探索者", "知识记录者", "终身学习者"]; // 更新的文本
     let textIndex = 0;
     let charIndex = 0;
 
@@ -44,4 +44,58 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 启动打字机
     setTimeout(type, 1000);
+
+    // 学习记录标签页切换功能
+    const learningTabs = document.querySelectorAll('.learning-tab');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    learningTabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            const targetTab = this.getAttribute('data-tab');
+            
+            // 移除所有活动状态
+            learningTabs.forEach(t => t.classList.remove('active'));
+            tabContents.forEach(content => content.classList.remove('active'));
+            
+            // 添加当前活动状态
+            this.classList.add('active');
+            document.getElementById(targetTab).classList.add('active');
+        });
+    });
+
+    // 添加一些交互效果
+    const paperCards = document.querySelectorAll('.paper-card');
+    paperCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-8px) scale(1.02)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+        });
+    });
+
+    // 知识卡片进度条动画
+    const progressBars = document.querySelectorAll('.progress-fill');
+    const observerOptions = {
+        threshold: 0.5,
+        rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const progressBar = entry.target;
+                const width = progressBar.style.width;
+                progressBar.style.width = '0%';
+                setTimeout(() => {
+                    progressBar.style.width = width;
+                }, 200);
+            }
+        });
+    }, observerOptions);
+
+    progressBars.forEach(bar => {
+        observer.observe(bar);
+    });
 });
