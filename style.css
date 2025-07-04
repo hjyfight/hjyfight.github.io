@@ -677,6 +677,7 @@ footer {
     .progress-bar {
         width: 100%;
     }
+<<<<<<< HEAD
     
     .email-container {
         flex-direction: column;
@@ -693,4 +694,6 @@ footer {
         align-self: center;
         padding: 10px 20px;
     }
+=======
+>>>>>>> b6cd99d60ebb5e4346ded73a6901033068c1a804
 }
