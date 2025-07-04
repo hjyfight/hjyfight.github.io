@@ -3,35 +3,308 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jinyu Hu的个人主页 定期维护中</title>
+    <title>Jinyu Hu - AI学习者 & 后端开发者</title>
+    <meta name="description" content="Jinyu Hu的个人主页 - 安徽师范大学人工智能专业学生，专注于后端开发和云原生技术">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
 <body>
+    <!-- 背景动画 -->
+    <div class="background-animation">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
     <nav class="navbar">
         <div class="container">
-            <a href="#" class="logo">Jinyu Hu</a>
+            <a href="#" class="logo">
+                <span class="logo-text">Jinyu Hu</span>
+                <span class="logo-subtitle">AI Learner</span>
+            </a>
             <ul class="nav-links">
                 <li><a href="#about">关于我</a></li>
+                <li><a href="#skills">技能</a></li>
                 <li><a href="#projects">项目</a></li>
                 <li><a href="#learning">学习记录</a></li>
                 <li><a href="#contact">联系我</a></li>
             </ul>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </nav>
 
     <div class="container">
         <header class="hero">
-            <img src="https://avatars.githubusercontent.com/u/122603277?v=4" alt="头像" class="avatar">
-            <h1>你好，我是 Jinyu Hu</h1>
-            <p class="subtitle"><span id="typewriter"></span></p>
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="hero-greeting">👋 你好，我是</div>
+                    <h1 class="hero-name">Jinyu Hu</h1>
+                    <div class="hero-roles">
+                        <span class="role-prefix">一名</span>
+                        <span id="typewriter" class="typewriter-text"></span>
+                    </div>
+                    <p class="hero-description">
+                        安徽师范大学人工智能专业学生，对后端技术和云原生充满热情，
+                        致力于构建高效、可扩展的系统解决方案。
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#projects" class="btn-primary">查看项目</a>
+                        <a href="#contact" class="btn-secondary">联系我</a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="50">0</div>
+                            <div class="stat-label">项目完成</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="120">0</div>
+                            <div class="stat-label">论文阅读</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="365">0</div>
+                            <div class="stat-label">学习天数</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="avatar-container">
+                        <img src="https://avatars.githubusercontent.com/u/122603277?v=4" alt="Jinyu Hu" class="avatar">
+                        <div class="avatar-ring"></div>
+                        <div class="status-indicator">
+                            <i class="fas fa-circle"></i>
+                            <span>正在学习中</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <div class="scroll-arrow">
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+            </div>
         </header>
 
         <section id="about">
-            <h2><i class="fas fa-user"></i> 关于我</h2>
-            <p>
-                安徽师范大学人工智能专业学生。对后端技术和云原生充满热情，擅长使用 Go 和 Python 构建高效、可扩展的系统。
-            </p>
+            <div class="section-header">
+                <h2><i class="fas fa-user"></i> 关于我</h2>
+                <p class="section-subtitle">了解更多关于我的故事</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p class="about-intro">
+                        我是一名充满激情的人工智能专业学生，目前就读于安徽师范大学。
+                        对技术的热爱驱使我不断探索新的领域，特别是在后端开发和云原生技术方面。
+                    </p>
+                    <div class="about-highlights">
+                        <div class="highlight-item">
+                            <i class="fas fa-graduation-cap"></i>
+                            <div>
+                                <h4>教育背景</h4>
+                                <p>安徽师范大学 - 人工智能专业</p>
+                            </div>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-code"></i>
+                            <div>
+                                <h4>专业方向</h4>
+                                <p>后端开发 & 云原生技术</p>
+                            </div>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-heart"></i>
+                            <div>
+                                <h4>兴趣爱好</h4>
+                                <p>技术探索、开源贡献、知识分享</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h4>2023 - 现在</h4>
+                                <p>专注人工智能学习</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h4>2022</h4>
+                                <p>开始后端开发</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h4>2021</h4>
+                                <p>编程之路起步</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <div class="section-header">
+                <h2><i class="fas fa-tools"></i> 技能专长</h2>
+                <p class="section-subtitle">我掌握的技术栈和工具</p>
+            </div>
+            <div class="skills-container">
+                <div class="skills-category">
+                    <h3><i class="fas fa-server"></i> 后端开发</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fab fa-golang"></i>
+                            </div>
+                            <div class="skill-info">
+                                <h4>Go</h4>
+                                <div class="skill-level">
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-width="85%"></div>
+                                    </div>
+                                    <span>85%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fab fa-python"></i>
+                            </div>
+                            <div class="skill-info">
+                                <h4>Python</h4>
+                                <div class="skill-level">
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-width="90%"></div>
+                                    </div>
+                                    <span>90%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <div class="skill-info">
+                                <h4>数据库</h4>
+                                <div class="skill-level">
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-width="80%"></div>
+                                    </div>
+                                    <span>80%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skills-category">
+                    <h3><i class="fas fa-cloud"></i> 云原生技术</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fab fa-docker"></i>
+                            </div>
+                            <div class="skill-info">
+                                <h4>Docker</h4>
+                                <div class="skill-level">
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-width="75%"></div>
+                                    </div>
+                                    <span>75%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fas fa-dharmachakra"></i>
+                            </div>
+                            <div class="skill-info">
+                                <h4>Kubernetes</h4>
+                                <div class="skill-level">
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-width="60%"></div>
+                                    </div>
+                                    <span>60%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fab fa-aws"></i>
+                            </div>
+                            <div class="skill-info">
+                                <h4>云服务</h4>
+                                <div class="skill-level">
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-width="70%"></div>
+                                    </div>
+                                    <span>70%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skills-category">
+                    <h3><i class="fas fa-brain"></i> AI/ML</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fab fa-python"></i>
+                            </div>
+                            <div class="skill-info">
+                                <h4>TensorFlow</h4>
+                                <div class="skill-level">
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-width="65%"></div>
+                                    </div>
+                                    <span>65%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fas fa-fire"></i>
+                            </div>
+                            <div class="skill-info">
+                                <h4>PyTorch</h4>
+                                <div class="skill-level">
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-width="70%"></div>
+                                    </div>
+                                    <span>70%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="skill-info">
+                                <h4>数据分析</h4>
+                                <div class="skill-level">
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-width="75%"></div>
+                                    </div>
+                                    <span>75%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <section id="projects">

@@ -1,49 +1,169 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // 导航栏滚动效果
+    const navbar = document.querySelector('.navbar');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+
     // 平滑滚动实现
-    const navLinks = document.querySelectorAll('.nav-links a');
+    const navLinks = document.querySelectorAll('.nav-links a, .btn-primary, .btn-secondary');
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetSection = document.querySelector(targetId);
-            if (targetSection) {
-                targetSection.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+            const href = this.getAttribute('href');
+            if (href && href.startsWith('#')) {
+                e.preventDefault();
+                const targetId = href;
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
             }
         });
     });
 
     // 打字机效果
     const typewriterElement = document.getElementById('typewriter');
-    const texts = ["AI学习者", "技术探索者", "知识记录者", "终身学习者"]; // 更新的文本
-    let textIndex = 0;
-    let charIndex = 0;
+    if (typewriterElement) {
+        const texts = ["AI学习者", "后端开发者", "技术探索者", "云原生爱好者"];
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
 
-    function type() {
-        if (charIndex < texts[textIndex].length) {
-            typewriterElement.textContent += texts[textIndex].charAt(charIndex);
-            charIndex++;
-            setTimeout(type, 100); // 打字速度
-        } else {
-            setTimeout(erase, 2000); // 完成后等待2秒
+        function typeWriter() {
+            const currentText = texts[textIndex];
+            
+            if (isDeleting) {
+                typewriterElement.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typewriterElement.textContent = currentText.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = isDeleting ? 50 : 100;
+
+            if (!isDeleting && charIndex === currentText.length) {
+                typeSpeed = 2000; // 暂停时间
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                textIndex = (textIndex + 1) % texts.length;
+                typeSpeed = 500;
+            }
+
+            setTimeout(typeWriter, typeSpeed);
         }
+
+        setTimeout(typeWriter, 1000);
     }
 
-    function erase() {
-        if (charIndex > 0) {
-            typewriterElement.textContent = texts[textIndex].substring(0, charIndex - 1);
-            charIndex--;
-            setTimeout(erase, 50); // 删除速度
-        } else {
-            textIndex = (textIndex + 1) % texts.length;
-            setTimeout(type, 500); // 切换下一个文本前等待0.5秒
-        }
+    // 数字统计动画
+    const statNumbers = document.querySelectorAll('.stat-number');
+    const animateStats = () => {
+        statNumbers.forEach(stat => {
+            const target = parseInt(stat.getAttribute('data-target'));
+            const duration = 2000;
+            const step = target / (duration / 16);
+            let current = 0;
+
+            const updateNumber = () => {
+                current += step;
+                if (current < target) {
+                    stat.textContent = Math.floor(current);
+                    requestAnimationFrame(updateNumber);
+                } else {
+                    stat.textContent = target;
+                }
+            };
+
+            updateNumber();
+        });
+    };
+
+    // 技能进度条动画
+    const animateSkills = () => {
+        const skillBars = document.querySelectorAll('.skill-progress');
+        skillBars.forEach(bar => {
+            const width = bar.getAttribute('data-width');
+            setTimeout(() => {
+                bar.style.width = width;
+            }, 500);
+        });
+    };
+
+    // Intersection Observer for animations
+    const observerOptions = {
+        threshold: 0.3,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const target = entry.target;
+                
+                // 统计数字动画
+                if (target.classList.contains('hero-stats')) {
+                    animateStats();
+                }
+                
+                // 技能条动画
+                if (target.id === 'skills') {
+                    animateSkills();
+                }
+                
+                // 进度条动画
+                if (target.classList.contains('progress-fill')) {
+                    const width = target.style.width;
+                    target.style.width = '0%';
+                    setTimeout(() => {
+                        target.style.width = width;
+                    }, 200);
+                }
+                
+                // 添加进入动画
+                if (!target.classList.contains('progress-fill')) {
+                    target.style.opacity = '1';
+                    target.style.transform = 'translateY(0)';
+                }
+            }
+        });
+    }, observerOptions);
+
+    // 观察需要动画的元素
+    const animatedElements = document.querySelectorAll('.hero-stats, #skills, .about-content, .learning-container');
+    animatedElements.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+        observer.observe(el);
+    });
+
+    // 观察进度条
+    const progressBars = document.querySelectorAll('.progress-fill');
+    progressBars.forEach(bar => {
+        observer.observe(bar);
+    });
+
+    // 滚动指示器点击事件
+    const scrollIndicator = document.querySelector('.scroll-indicator');
+    if (scrollIndicator) {
+        scrollIndicator.addEventListener('click', () => {
+            const aboutSection = document.querySelector('#about');
+            if (aboutSection) {
+                aboutSection.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
     }
-    
-    // 启动打字机
-    setTimeout(type, 1000);
 
     // 学习记录标签页切换功能
     const learningTabs = document.querySelectorAll('.learning-tab');
@@ -73,30 +193,6 @@ document.addEventListener('DOMContentLoaded', function() {
         card.addEventListener('mouseleave', function() {
             this.style.transform = 'translateY(0) scale(1)';
         });
-    });
-
-    // 知识卡片进度条动画
-    const progressBars = document.querySelectorAll('.progress-fill');
-    const observerOptions = {
-        threshold: 0.5,
-        rootMargin: '0px 0px -100px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const progressBar = entry.target;
-                const width = progressBar.style.width;
-                progressBar.style.width = '0%';
-                setTimeout(() => {
-                    progressBar.style.width = width;
-                }, 200);
-            }
-        });
-    }, observerOptions);
-
-    progressBars.forEach(bar => {
-        observer.observe(bar);
     });
 });
 
