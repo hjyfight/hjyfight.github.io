@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // 版本检查 - 确保资源正确加载
+    console.log('个人主页已加载 - 版本: 2025.07.04.01');
+    
     // 导航栏滚动效果
     const navbar = document.querySelector('.navbar');
     window.addEventListener('scroll', () => {
