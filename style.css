@@ -1,124 +1,207 @@
-/* 全局样式 */
+/* Google Fonts - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+:root {
+    --primary-color: #3498db; /* 主题色 */
+    --background-color: #121212; /* 深色背景 */
+    --surface-color: #1e1e1e;   /* 卡片等表面颜色 */
+    --text-color: #e0e0e0;       /* 主要文字颜色 */
+    --text-secondary-color: #a0a0a0; /* 次要文字颜色 */
+    --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+html {
+    scroll-behavior: smooth; /* 实现平滑滚动 */
+}
+
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    line-height: 1.6;
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.7;
 }
 
 .container {
-    max-width: 800px;
-    margin: 40px auto;
+    max-width: 960px;
+    margin: 0 auto;
     padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-/* 头部样式 */
-header {
+/* 导航栏 */
+.navbar {
+    background-color: var(--surface-color);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.logo {
+    font-size: 1.5em;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 25px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 400;
+    transition: color 0.3 ease;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+/* 头部 */
+.hero {
     text-align: center;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #eee;
+    padding: 80px 20px;
 }
 
 .avatar {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%; /* 圆形头像 */
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 5px solid var(--primary-color);
     object-fit: cover;
-    margin-bottom: 10px;
-    border: 3px solid #ddd;
+    margin-bottom: 20px;
+    box-shadow: var(--card-shadow);
 }
 
-header h1 {
-    margin: 0;
-    font-size: 2.5em;
-    color: #111;
+.hero h1 {
+    font-size: 3em;
+    margin: 10px 0;
+    color: #fff;
 }
 
-header p {
-    margin: 5px 0 0;
-    color: #666;
-    font-size: 1.1em;
+.subtitle {
+    font-size: 1.5em;
+    color: var(--text-secondary-color);
+    min-height: 1.5em; /* 防止打字时页面跳动 */
 }
 
-/* 区块通用样式 */
+/* 打字机光标效果 */
+#typewriter::after {
+    content: '|';
+    animation: blink 0.7 infinite;
+}
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+/* 内容区块 */
 section {
-    padding: 20px 0;
-    border-bottom: 1px solid #eee;
-}
-
-section:last-of-type {
-    border-bottom: none;
+    padding: 60px 0;
+    border-top: 1px solid #333;
 }
 
 h2 {
-    color: #333;
-    border-left: 4px solid #0366d6; /* 蓝色左边框 */
-    padding-left: 10px;
+    text-align: center;
+    font-size: 2.2em;
+    margin-bottom: 40px;
+    color: #fff;
 }
 
-/* 项目网格布局 */
+h2 i {
+    margin-right: 10px;
+    color: var(--primary-color);
+}
+
+/* 项目卡片 */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
 }
 
 .project-card {
-    background-color: #f9f9f9;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    transition: transform 0.3, box-shadow 0.3;
+    background: var(--surface-color);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    transition: transform 0.3 ease, box-shadow 0.3 ease;
+    border: 1px solid #333;
 }
 
 .project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
 }
 
-.project-card h3 {
+.card-content {
+    padding: 25px;
+}
+
+.card-content h3 {
+    color: var(--primary-color);
     margin-top: 0;
-    color: #0366d6;
 }
 
-.project-card a {
+.card-content a {
     text-decoration: none;
-    color: #fff;
-    background-color: #0366d6;
-    padding: 8px 12px;
-    border-radius: 4px;
+    color: var(--primary-color);
+    font-weight: 600;
     display: inline-block;
-    margin-top: 10px;
-    transition: background-color 0.3;
+    margin-top: 15px;
+    transition: transform 0.3 ease;
 }
 
-.project-card a:hover {
-    background-color: #0056b3;
+.card-content a:hover {
+   transform: translateX(5px);
 }
 
-/* 联系方式和社交链接 */
+/* 联系方式 */
+#contact {
+    text-align: center;
+}
+
+.social-links {
+    margin-top: 20px;
+}
+
 .social-links a {
-    text-decoration: none;
-    color: #0366d6;
-    margin-right: 15px;
-    font-size: 1.1em;
-    transition: color 0.3;
+    color: var(--text-secondary-color);
+    font-size: 2em;
+    margin: 0 15px;
+    transition: color 0.3 ease, transform 0.3 ease;
+    display: inline-block;
 }
 
 .social-links a:hover {
-    color: #0056b3;
-    text-decoration: underline;
+    color: var(--primary-color);
+    transform: scale(1.2);
 }
 
 /* 页脚 */
 footer {
     text-align: center;
-    padding-top: 20px;
-    color: #777;
+    padding: 20px;
+    margin-top: 40px;
+    background-color: var(--surface-color);
+    color: var(--text-secondary-color);
     font-size: 0.9em;
 }
