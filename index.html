@@ -5,59 +5,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>[你的名字]的个人主页</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">[你的名字]</a>
+            <ul class="nav-links">
+                <li><a href="#about">关于我</a></li>
+                <li><a href="#projects">项目</a></li>
+                <li><a href="#contact">联系我</a></li>
+            </ul>
+        </div>
+    </nav>
 
     <div class="container">
-        <header>
-            <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="头像" class="avatar">
-            <h1>[你的名字]</h1>
-            <p>[你的头衔或身份，例如：Web开发者 / 学生 / 设计师]</p>
+        <header class="hero">
+            <img src="avatar.png" alt="头像" class="avatar">
+            <h1>你好，我是 [你的名字]</h1>
+            <p class="subtitle"><span id="typewriter"></span></p>
         </header>
 
         <section id="about">
-            <h2>关于我</h2>
+            <h2><i class="fas fa-user"></i> 关于我</h2>
             <p>
                 这里是你的自我介绍。你可以写下你的兴趣、专业领域、技能，或者任何你想让别人了解的事情。
-                试着让它简洁而有趣！例如，你可以提到你热衷于什么技术，或者你最近在学习什么。
+                例如：我是一名对后端技术和云原生充满热情的开发者，擅长使用 Go 和 Python 构建高效、可扩展的系统。
             </p>
         </section>
 
         <section id="projects">
-            <h2>我的项目</h2>
+            <h2><i class="fas fa-project-diagram"></i> 我的项目</h2>
             <div class="projects-grid">
                 <div class="project-card">
-                    <h3>项目一的名称</h3>
-                    <p>这里是关于项目一的简短描述。说明这个项目是做什么的，你用了什么技术。</p>
-                    <a href="[你的项目链接]" target="_blank">查看项目</a>
+                    <div class="card-content">
+                        <h3>项目一</h3>
+                        <p>一个很酷的项目的简短描述，说明它的功能和使用的技术栈（例如：Vue.js, Node.js, MongoDB）。</p>
+                        <a href="#" target="_blank">查看详情 <i class="fas fa-arrow-right"></i></a>
+                    </div>
                 </div>
                 <div class="project-card">
-                    <h3>项目二的名称</h3>
-                    <p>这里是关于项目二的简短描述。说明这个项目是做什么的，你用了什么技术。</p>
-                    <a href="[你的项目链接]" target="_blank">查看项目</a>
+                     <div class="card-content">
+                        <h3>项目二</h3>
+                        <p>一个很酷的项目的简短描述，说明它的功能和使用的技术栈（例如：React, Firebase）。</p>
+                        <a href="#" target="_blank">查看详情 <i class="fas fa-arrow-right"></i></a>
+                    </div>
                 </div>
                 <div class="project-card">
-                    <h3>项目三的名称</h3>
-                    <p>这里是关于项目三的简短描述。说明这个项目是做什么的，你用了什么技术。</p>
-                    <a href="[你的项目链接]" target="_blank">查看项目</a>
+                     <div class="card-content">
+                        <h3>项目三</h3>
+                        <p>一个很酷的项目的简短描述，说明它的功能和使用的技术栈（例如：Python, Django）。</p>
+                        <a href="#" target="_blank">查看详情 <i class="fas fa-arrow-right"></i></a>
+                    </div>
                 </div>
             </div>
         </section>
 
         <section id="contact">
-            <h2>联系我</h2>
-            <p>你可以在以下平台找到我：</p>
+            <h2><i class="fas fa-envelope"></i> 联系我</h2>
+            <p>随时通过以下方式与我交流：</p>
             <div class="social-links">
-                <a href="https://github.com/[你的GitHub用户名]" target="_blank">GitHub</a>
-                <a href="https://www.linkedin.com/in/[你的LinkedIn用户名]" target="_blank">LinkedIn</a>
-                <a href="mailto:[你的邮箱地址]">邮箱</a>
-                </div>
+                <a href="https://github.com/[你的GitHub用户名]" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/[你的LinkedIn用户名]" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="mailto:[你的邮箱地址]" title="Email"><i class="fas fa-envelope"></i></a>
+                <a href="[你的博客地址]" target="_blank" title="Blog"><i class="fas fa-blog"></i></a>
+            </div>
         </section>
-
-        <footer>
-            <p>&copy; 2025 [你的名字]. All Rights Reserved.</p>
-        </footer>
     </div>
 
+    <footer>
+        <p>Designed & Built by [你的名字] &copy; 2025</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
