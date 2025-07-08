@@ -1161,34 +1161,53 @@ footer {
 
 .modal-content {
     background-color: var(--card-background);
-    margin: 2% auto;
+    margin: 5vh auto;
     padding: 0;
     border-radius: 15px;
     width: 90%;
-    max-width: 900px;
+    max-width: 800px;
     max-height: 90vh;
     overflow-y: auto;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-    animation: modalSlideIn 0.3s ease-out;
+    animation: modalFadeInScale 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-@keyframes modalSlideIn {
+@keyframes modalFadeInScale {
     from {
         opacity: 0;
-        transform: translateY(-50px) scale(0.9);
+        transform: scale(0.95);
     }
     to {
         opacity: 1;
-        transform: translateY(0) scale(1);
+        transform: scale(1);
+    }
+}
+
+/* 新增：弹窗关闭动画 */
+.modal-content.fade-out {
+    animation: modalFadeOutScale 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards;
+}
+
+@keyframes modalFadeOutScale {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.95);
     }
 }
 
 .modal-header {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: white;
-    padding: 20px 30px;
-    border-radius: 15px 15px 0 0;
+    background: transparent;
+    color: var(--text-color);
+    padding: 25px 30px 15px 30px;
+    border-bottom: 1px solid var(--border-color);
     position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .modal-header h2 {
@@ -1198,27 +1217,23 @@ footer {
 }
 
 .close {
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 28px;
-    font-weight: bold;
+    position: static;
+    transform: none;
+    font-size: 2rem;
+    font-weight: normal;
     cursor: pointer;
-    transition: all 0.3s ease;
-    color: rgba(255, 255, 255, 0.8);
-    width: 35px;
-    height: 35px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
+    transition: all 0.2s ease;
+    color: var(--text-light);
+    width: auto;
+    height: auto;
+    display: block;
+    border-radius: 0;
 }
 
 .close:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-    color: white;
-    transform: translateY(-50%) rotate(90deg);
+    background-color: transparent;
+    color: var(--primary-color);
+    transform: scale(1.1);
 }
 
 .modal-body {
@@ -1259,10 +1274,14 @@ footer {
 }
 
 .paper-sections .section {
-    background: var(--hover-color);
-    padding: 20px;
-    border-radius: 10px;
-    border-left: 4px solid var(--primary-color);
+    background: transparent;
+    padding: 20px 0;
+    border-left: none;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.paper-sections .section:last-child {
+    border-bottom: none;
 }
 
 .paper-sections .section h4 {
@@ -1295,6 +1314,45 @@ footer {
     color: var(--text-color);
     margin-bottom: 8px;
     line-height: 1.5;
+}
+
+.modal-body .paper-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.modal-body .paper-link {
+    background-color: var(--hover-color);
+    color: var(--text-color);
+    padding: 8px 15px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid transparent;
+}
+
+.modal-body .paper-link:hover {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(var(--primary-color-rgb), 0.3);
+}
+
+.paper-card::before {
+    display: none;
+}
+
+.paper-card:hover {
+    transform: none;
+    box-shadow: none;
 }
 
 /* 响应式设计 */

@@ -353,22 +353,16 @@ function showPaperDetails(paperId) {
         linkElement.innerHTML = `<i class="${link.icon}"></i> ${link.title}`;
         linksContainer.appendChild(linkElement);
     });
-    
+
     // 显示弹窗
     const modal = document.getElementById('paperModal');
+    const modalContent = modal.querySelector('.modal-content');
+    
+    // 移除关闭动画类，确保每次打开都播放打开动画
+    modalContent.classList.remove('fade-out');
+    
     modal.style.display = 'block';
     document.body.style.overflow = 'hidden'; // 防止背景滚动
-    
-    // 添加动画
-    const modalContent = modal.querySelector('.modal-content');
-    modalContent.style.transform = 'translateY(-50px) scale(0.9)';
-    modalContent.style.opacity = '0';
-    
-    setTimeout(() => {
-        modalContent.style.transition = 'all 0.3s ease-out';
-        modalContent.style.transform = 'translateY(0) scale(1)';
-        modalContent.style.opacity = '1';
-    }, 10);
 }
 
 // 关闭论文详情弹窗
@@ -376,14 +370,14 @@ function closePaperModal() {
     const modal = document.getElementById('paperModal');
     const modalContent = modal.querySelector('.modal-content');
     
-    modalContent.style.transition = 'all 0.2s ease-in';
-    modalContent.style.transform = 'translateY(-30px) scale(0.95)';
-    modalContent.style.opacity = '0';
+    // 添加关闭动画类
+    modalContent.classList.add('fade-out');
     
+    // 在动画结束后隐藏弹窗
     setTimeout(() => {
         modal.style.display = 'none';
         document.body.style.overflow = 'auto'; // 恢复背景滚动
-    }, 200);
+    }, 300); // 动画时长为300ms
 }
 
 // 点击弹窗外部关闭
