@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // 打字机效果
     const typewriterElement = document.getElementById('typewriter');
     if (typewriterElement) {
-        const texts = ["AI学习者", "后端开发者", "技术探索者", "云原生爱好者"];
+        const texts = ["AI学习者", "技术探索者"];
         let textIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
