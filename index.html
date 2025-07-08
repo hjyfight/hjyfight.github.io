@@ -307,6 +307,7 @@
             </div>
         </section>
 
+        <!-- 我的项目部分暂时注释掉
         <section id="projects">
             <h2><i class="fas fa-project-diagram"></i> 我的项目</h2>
             <div class="projects-grid">
@@ -333,6 +334,7 @@
                 </div>
             </div>
         </section>
+        -->
 
         <section id="learning">
             <h2><i class="fas fa-graduation-cap"></i> 学习记录</h2>
@@ -347,7 +349,7 @@
                     <!-- 论文阅读标签页 -->
                     <div class="tab-content active" id="papers">
                         <div class="papers-grid">
-                            <div class="paper-card">
+                            <div class="paper-card" onclick="showPaperDetails('transformer')">
                                 <div class="paper-header">
                                     <h3>Attention Is All You Need</h3>
                                     <span class="paper-year">2017</span>
@@ -363,16 +365,16 @@
                                     介绍了革命性的Transformer架构，完全基于注意力机制，为现代NLP奠定了基础。
                                 </div>
                                 <div class="paper-links">
-                                    <a href="#" target="_blank" class="paper-link">
+                                    <a href="#" target="_blank" class="paper-link" onclick="event.stopPropagation()">
                                         <i class="fas fa-file-pdf"></i> 论文链接
                                     </a>
-                                    <a href="#" class="paper-link notes-link">
+                                    <a href="#" class="paper-link notes-link" onclick="event.stopPropagation()">
                                         <i class="fas fa-sticky-note"></i> 我的笔记
                                     </a>
                                 </div>
                             </div>
                             
-                            <div class="paper-card">
+                            <div class="paper-card" onclick="showPaperDetails('bert')">
                                 <div class="paper-header">
                                     <h3>BERT: Pre-training of Deep Bidirectional Transformers</h3>
                                     <span class="paper-year">2018</span>
@@ -388,10 +390,10 @@
                                     提出了双向编码器表示的预训练方法，在多个NLP任务上取得了突破性进展。
                                 </div>
                                 <div class="paper-links">
-                                    <a href="#" target="_blank" class="paper-link">
+                                    <a href="#" target="_blank" class="paper-link" onclick="event.stopPropagation()">
                                         <i class="fas fa-file-pdf"></i> 论文链接
                                     </a>
-                                    <a href="#" class="paper-link notes-link">
+                                    <a href="#" class="paper-link notes-link" onclick="event.stopPropagation()">
                                         <i class="fas fa-sticky-note"></i> 我的笔记
                                     </a>
                                 </div>
@@ -543,6 +545,58 @@
     <footer>
         <p>Designed & Built by Jinyu Hu &copy; 2025</p>
     </footer>
+
+    <!-- 论文详情弹窗 -->
+    <div id="paperModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close" onclick="closePaperModal()">&times;</span>
+                <h2 id="modalTitle">论文详情</h2>
+            </div>
+            <div class="modal-body">
+                <div class="paper-details">
+                    <div class="paper-meta">
+                        <h3 id="paperTitle"></h3>
+                        <p class="paper-authors" id="paperAuthors"></p>
+                        <p class="paper-venue" id="paperVenue"></p>
+                        <div class="paper-tags" id="paperTags"></div>
+                    </div>
+                    
+                    <div class="paper-sections">
+                        <div class="section">
+                            <h4><i class="fas fa-file-alt"></i> 论文摘要</h4>
+                            <p id="paperAbstract"></p>
+                        </div>
+                        
+                        <div class="section">
+                            <h4><i class="fas fa-key"></i> 核心贡献</h4>
+                            <ul id="paperContributions"></ul>
+                        </div>
+                        
+                        <div class="section">
+                            <h4><i class="fas fa-cogs"></i> 技术方法</h4>
+                            <div id="paperMethods"></div>
+                        </div>
+                        
+                        <div class="section">
+                            <h4><i class="fas fa-chart-line"></i> 实验结果</h4>
+                            <div id="paperResults"></div>
+                        </div>
+                        
+                        <div class="section">
+                            <h4><i class="fas fa-lightbulb"></i> 我的思考</h4>
+                            <div id="paperNotes"></div>
+                        </div>
+                        
+                        <div class="section">
+                            <h4><i class="fas fa-link"></i> 相关链接</h4>
+                            <div class="paper-links" id="paperLinks"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>

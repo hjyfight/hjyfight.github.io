@@ -262,3 +262,144 @@ function showCopyError(copyBtn, originalIcon) {
         copyBtn.innerHTML = originalIcon;
     }, 2000);
 }
+
+// 论文详情数据
+const paperDetails = {
+    transformer: {
+        title: "Attention Is All You Need",
+        authors: "Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Kaiser, Illia Polosukhin",
+        venue: "NIPS 2017",
+        tags: ["Transformer", "Attention", "NLP", "Deep Learning"],
+        abstract: "The dominant sequence transduction models are based on complex recurrent or convolutional neural networks that include an encoder and a decoder. The best performing models also connect the encoder and decoder through an attention mechanism. We propose a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely.",
+        contributions: [
+            "提出了完全基于注意力机制的Transformer架构",
+            "摒弃了传统的RNN和CNN结构，实现了更好的并行化",
+            "在机器翻译任务上取得了SOTA结果",
+            "为后续的预训练模型（BERT、GPT等）奠定了基础"
+        ],
+        methods: "Transformer使用多头自注意力机制和位置编码来处理序列数据。编码器由6个相同的层组成，每层包含多头自注意力和前馈网络。解码器同样由6个层组成，但在多头注意力基础上增加了掩码机制。",
+        results: "在WMT 2014英德翻译任务上取得了28.4 BLEU分数，在英法翻译任务上取得了41.8 BLEU分数，同时训练时间大幅减少。模型在其他序列转换任务上也表现出色。",
+        notes: "这篇论文是NLP领域的里程碑。Transformer的自注意力机制解决了RNN无法并行化的问题，同时能够捕捉长距离依赖关系。论文的创新在于完全依赖注意力机制，这启发了后续BERT、GPT等预训练模型的发展。",
+        links: [
+            { title: "原论文", url: "https://arxiv.org/abs/1706.03762", icon: "fas fa-file-pdf" },
+            { title: "代码实现", url: "https://github.com/tensorflow/tensor2tensor", icon: "fab fa-github" },
+            { title: "详细解析", url: "#", icon: "fas fa-blog" }
+        ]
+    },
+    bert: {
+        title: "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+        authors: "Jacob Devlin, Ming-Wei Chang, Kenton Lee, Kristina Toutanova",
+        venue: "NAACL 2019",
+        tags: ["BERT", "Pre-training", "NLP", "Bidirectional"],
+        abstract: "We introduce a new language representation model called BERT, which stands for Bidirectional Encoder Representations from Transformers. Unlike recent language representation models, BERT is designed to pre-train deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers.",
+        contributions: [
+            "提出了双向预训练的语言表示模型",
+            "使用掩码语言模型和下一句预测任务进行预训练",
+            "在11个NLP任务上刷新了SOTA记录",
+            "证明了双向上下文的重要性"
+        ],
+        methods: "BERT基于Transformer的编码器架构，通过掩码语言模型（MLM）和下一句预测（NSP）任务进行预训练。MLM随机掩码输入中的部分词语，让模型预测被掩码的词语；NSP让模型判断两个句子是否连续。",
+        results: "在GLUE基准测试中取得了80.5%的平均分数，比之前最好的结果提升了7.7%。在SQuAD v1.1问答任务上达到了93.2%的F1分数，在SQuAD v2.0上达到了83.1%的F1分数。",
+        notes: "BERT的成功证明了预训练-微调范式的有效性。双向编码器相比单向模型能够更好地理解上下文，这对下游任务非常重要。BERT启发了后续众多预训练模型的发展，如RoBERTa、ALBERT等。",
+        links: [
+            { title: "原论文", url: "https://arxiv.org/abs/1810.04805", icon: "fas fa-file-pdf" },
+            { title: "官方代码", url: "https://github.com/google-research/bert", icon: "fab fa-github" },
+            { title: "Hugging Face", url: "https://huggingface.co/bert-base-uncased", icon: "fas fa-external-link-alt" }
+        ]
+    }
+};
+
+// 显示论文详情弹窗
+function showPaperDetails(paperId) {
+    const paper = paperDetails[paperId];
+    if (!paper) return;
+    
+    // 填充论文信息
+    document.getElementById('paperTitle').textContent = paper.title;
+    document.getElementById('paperAuthors').textContent = paper.authors;
+    document.getElementById('paperVenue').textContent = paper.venue;
+    document.getElementById('paperAbstract').textContent = paper.abstract;
+    document.getElementById('paperMethods').textContent = paper.methods;
+    document.getElementById('paperResults').textContent = paper.results;
+    document.getElementById('paperNotes').textContent = paper.notes;
+    
+    // 填充标签
+    const tagsContainer = document.getElementById('paperTags');
+    tagsContainer.innerHTML = '';
+    paper.tags.forEach(tag => {
+        const tagElement = document.createElement('span');
+        tagElement.className = 'tag';
+        tagElement.textContent = tag;
+        tagsContainer.appendChild(tagElement);
+    });
+    
+    // 填充贡献列表
+    const contributionsContainer = document.getElementById('paperContributions');
+    contributionsContainer.innerHTML = '';
+    paper.contributions.forEach(contribution => {
+        const li = document.createElement('li');
+        li.textContent = contribution;
+        contributionsContainer.appendChild(li);
+    });
+    
+    // 填充链接
+    const linksContainer = document.getElementById('paperLinks');
+    linksContainer.innerHTML = '';
+    paper.links.forEach(link => {
+        const linkElement = document.createElement('a');
+        linkElement.href = link.url;
+        linkElement.target = '_blank';
+        linkElement.className = 'paper-link';
+        linkElement.innerHTML = `<i class="${link.icon}"></i> ${link.title}`;
+        linksContainer.appendChild(linkElement);
+    });
+    
+    // 显示弹窗
+    const modal = document.getElementById('paperModal');
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden'; // 防止背景滚动
+    
+    // 添加动画
+    const modalContent = modal.querySelector('.modal-content');
+    modalContent.style.transform = 'translateY(-50px) scale(0.9)';
+    modalContent.style.opacity = '0';
+    
+    setTimeout(() => {
+        modalContent.style.transition = 'all 0.3s ease-out';
+        modalContent.style.transform = 'translateY(0) scale(1)';
+        modalContent.style.opacity = '1';
+    }, 10);
+}
+
+// 关闭论文详情弹窗
+function closePaperModal() {
+    const modal = document.getElementById('paperModal');
+    const modalContent = modal.querySelector('.modal-content');
+    
+    modalContent.style.transition = 'all 0.2s ease-in';
+    modalContent.style.transform = 'translateY(-30px) scale(0.95)';
+    modalContent.style.opacity = '0';
+    
+    setTimeout(() => {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto'; // 恢复背景滚动
+    }, 200);
+}
+
+// 点击弹窗外部关闭
+window.onclick = function(event) {
+    const modal = document.getElementById('paperModal');
+    if (event.target === modal) {
+        closePaperModal();
+    }
+}
+
+// ESC键关闭弹窗
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        const modal = document.getElementById('paperModal');
+        if (modal.style.display === 'block') {
+            closePaperModal();
+        }
+    }
+});

@@ -1145,6 +1145,158 @@ footer {
     min-width: 40px;
 }
 
+/* 论文详情弹窗样式 */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: var(--card-background);
+    margin: 2% auto;
+    padding: 0;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 900px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.modal-header {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 20px 30px;
+    border-radius: 15px 15px 0 0;
+    position: relative;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.close {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: rgba(255, 255, 255, 0.8);
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.close:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    transform: translateY(-50%) rotate(90deg);
+}
+
+.modal-body {
+    padding: 30px;
+}
+
+.paper-details {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.paper-meta h3 {
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    line-height: 1.3;
+}
+
+.paper-meta .paper-authors {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.paper-meta .paper-venue {
+    font-size: 1rem;
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+.paper-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.paper-sections .section {
+    background: var(--hover-color);
+    padding: 20px;
+    border-radius: 10px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.paper-sections .section h4 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.paper-sections .section h4 i {
+    width: 20px;
+    text-align: center;
+}
+
+.paper-sections .section p,
+.paper-sections .section div {
+    color: var(--text-color);
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.paper-sections .section ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.paper-sections .section li {
+    color: var(--text-color);
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
 /* 响应式设计 */
 @media (max-width: 768px) {
     .nav-links {
@@ -1295,5 +1447,16 @@ footer {
     .btn-primary, .btn-secondary {
         padding: 12px 25px;
         font-size: 0.9em;
+    }
+}
+
+/* 深色主题适配 */
+@media (prefers-color-scheme: dark) {
+    .modal {
+        background-color: rgba(0, 0, 0, 0.9);
+    }
+    
+    .paper-sections .section {
+        background: rgba(255, 255, 255, 0.05);
     }
 }
